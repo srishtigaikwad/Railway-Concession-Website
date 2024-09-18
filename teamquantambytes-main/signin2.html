@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="login.js" defer></script>
+    <link rel="stylesheet" href="style2.css">
+
+
+
+    <script src="login.js" defer></script>
+    <link href="login.css" rel="stylesheet" />
+
+
+
+</head>
+
+<body>
+
+    <form method="post" class="form_back" id="form1">
+
+
+        <div id="sign_up_cred">
+            <label for="sign_up">
+                <h1>Sign Up</h1>
+            </label><br>
+            <div>
+                <p> Name: </p>
+                <input type="text" id="name" name="name" required>
+            </div>
+
+            <div>
+                <p>Roll No:</p> <input type="number" id="rollno" name="rollno" required>
+            </div>
+
+            <label for="dob">Date of Birth:</label><br><br>
+            <input type="date" id="dob" name="dob"><br><br>
+
+
+            <div>
+                <p>Address</p> <input type="text" id="address" name="address" required>
+            </div>
+            <p>Select Your Branch:</p>
+
+
+    <input type="radio" id="Computer Engineering" name="branch" value="Computer Engineering">
+    <label for="Computer Engineering">Computer Engineering </label><br>
+    <input type="radio" id="Computer Science and Technology " name="branch" value="Computer Science and Technology ">
+    <label for="Computer Science and Technology ">Computer Science and Technology </label><br>
+    <input type="radio" id="Information Technology " name="branch" value="Information Technologyt">
+    <label for="Information Technology">Information Technology</label><br>
+    <input type="radio" id="Electronics and Communication" name="branch" value="Electronics and Communication">
+    <label for="Electronics and Communication">Electronics and Communication</label><br>
+    <input type="radio" id="Data Science" name="branch" value="Data Science">
+    <label for="Data Science">Data Science</label><br>
+    <input type="reset">
+
+<p>Select your Academic Year:</p>
+
+
+  <input type="radio" id="First Year" name="year" value="First Year">
+  <label for="First Year">First Year</label><br>
+  <input type="radio" id="Second Year" name="year" value="Second Year">
+  <label for="Second Year">Second Year</label><br>
+  <input type="radio" id="Third Year" name="year" value="Third Year">
+  <label for="Third Year">Third Year</label><br>
+  <input type="radio" id="Final Year" name="year" value="Final Year">
+  <label for="Final Year">Final Year</label><br>
+  <input type="reset"> 
+
+            <div>
+                <P>Mobile no</p> <input type="number" id="mobileno" name="mobileno" required>
+                <div>
+                    <P>Password:</p> <input type="password" id="password" name="password" required>
+                </div><br>
+                <button type="submit"> signup </button><br><br><br>
+                Already have an Account?<a
+                    href="file:///C:/Users/Lakshya%20Chobdar/OneDrive/Documents/IeeeHackathon/login.html"
+                    target="_blank" class="log_in">Log In</a>
+            </div>
+
+    </form>
+    <script src="https://cdnjs.cloudflare.cum/ajax/libs/firebase/7.14.1-0/firebase"></script>
+    <!-- <script src="./mail.js"></script> -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+        // Paste the code from Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPI7GO5-3H1jWK1QA6vMLdNT3RTYML3dc",
+            authDomain: "quantam-bytes.firebaseapp.com",
+            databaseURL: "https://quantam-bytes-default-rtdb.firebaseio.com",
+            projectId: "quantam-bytes",
+            storageBucket: "quantam-bytes.appspot.com",
+            messagingSenderId: "585268620067",
+            appId: "1:585268620067:web:e38ac87fd084c37b447a96"
+
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Get a reference to the database service
+        const db = getDatabase(app);
+        document.getElementById('form1').addEventListener('submit', function (e) {
+            e.preventDefault();
+            set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+                name: document.getElementById('name').value,
+                rollno: document.getElementById('rollno').value,
+                dob: document.getElementById('dob').value,
+                address: document.getElementById('address').value,
+                mobileno: document.getElementById('mobileno').value,
+                password: document.getElementById('password').value
+            });
+
+            alert('Your form is submitted');
+            document.getElementById('form1').reset();
+        });
+    </script>
+</body>
+
+</html>

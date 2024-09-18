@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scale=no">
+    <script src="java.js" defer></script>
+    <title>dashboard</title>
+    <link rel="stylesheet" type="text/css" href="dashboard.css" media="screen"/>
+    <script>
+        console.log("Fill the form correctly.");
+        </script>
+</head>
+
+<div class="title">
+    <h1>Railway Concession Portal</h1>
+</div>
+
+<!-- Tab links -->
+<div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Profile')">Profile</button>
+    <button class="tablinks" onclick="openCity(event, 'Applied Concessions')">Applied Concessions</button>
+    <button class="tablinks" onclick="openCity(event, 'Log out')">Log out</button>
+  </div>
+  
+  <!-- Tab content -->
+  <div id="Profile" class="tabcontent">
+    <h3>Profile</h3>
+    <p>:)</p>
+  </div>
+  
+  <div id="Applied Concessions" class="tabcontent">
+    <h3>Applied Concessions</h3>
+    <p>:)</p>
+  </div>
+  
+  <div id="Settings" class="tabcontent">
+    <h3>Settings</h3>
+    <p>:)</p>
+  </div>
+
+  <div id="Log out" class="tabcontent">
+    <h3>Log out</h3>
+    <p>:)</p>
+  </div>
+  </html>
+
+  
+
+<body>
+        
+<header>
+     <div class="main">
+     <div class="h">         
+     <ul class="tabs">
+     <li data-tab-target="#scholarships" class="active tab"><a>NEW CONCESSION</a></li>
+     <li data-tab-target="#examinations" class="tab"><a>CURRENT CONCESSION</a></li>
+     </ul>
+
+     <div class="tab-content">
+     <div id="scholarships" data-tab-content class="active">
+     <h2>APPLY HERE FOR A NEW RAILWAY CONCESSION</h2>
+     <div class="container">
+     <div class="column">
+      <form action="" id="form_style">
+        <div id="flex_detailes">
+             
+             <div id="detailes_box_2">
+                <h3><p id="detailes">Detailes</p></h3>
+                <br>
+                <p>Season Ticket No: </p><input type="number" name="stn" id="stn"><br><br>
+                    <p>Student Contact Number: </p><input type="number" name="contact" id="contact"><br><br>
+                    <p>Date:</p> <input type="date" name="date_of_apply" id="date_of_apply"><br><br>
+                    <p>Railway:</p>
+                    <p><select name="">
+                            <option value="">---select---</option>
+                            <option value="Central">Central</option>
+                            <option value="Western">Western</option>
+                            <option value="Harbour">Harbour Lines</option>
+
+
+                        </select> </p><br>
+                    <p>Pass :
+
+
+                    </p><select name="pass">
+                        <option value="">---Select---</option>
+                        <option value="Central">Quaterly</option>
+                        <option value="Western">Monthly</option>
+                    </select><br>
+
+                    <p>
+                        Class :
+
+                    </p><select name="pass">
+                        <option value="">---Select Class---</option>
+                        <option value="Central">First Class</option>
+                        <option value="Western">Second Class</option>
+                    </select>
+                    <br>
+
+                    <p>From :
+                    </p><input type="text" name="from" id="from">
+                    <br>
+                    <p>To:
+
+                    </p><input type="text" name="to" id="to"><br><br>
+                    <P>Date Of Expiry : </P><input type="date" name="expirydate" id="expiryDate"><br>
+
+
+                    <br><br>
+
+                    <input type="submit" value="Submit">&nbsp;&nbsp;
+                    &nbsp;<input type="reset" value="Reset">
+                <br><br>
+                  
+            
+            </div>
+           
+        </div>
+       
+    </form>
+     </div>   
+     </div>
+     </div>
+     </div>
+     <div class="tab-content">
+     <div id="examinations" data-tab-content="">
+     <h2>HERE IS YOUR CURRENT CONCESSION</h2>
+     <div class="container">
+      
+     <div class="column">
+      <h1></h1>   
+      
+      <ul>
+        <li>From:</li>
+        <li>To:</li>
+        <li>Valid from:</li>
+        <li>Valid till:</li>
+    </ul>
+    <p6>Your Railway Concession expires in ___ days</p6>
+     </div>
+     </div>
+     </div>
+     </div>
+  
+
+     <script src="https://cdnjs.cloudflare.cum/ajax/libs/firebase/7.14.1-0/firebase"></script>
+    <!-- <script src="./mail.js"></script> -->
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-app.js";
+        import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/9.6.11/firebase-database.js";
+
+        // Paste the code from Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDPI7GO5-3H1jWK1QA6vMLdNT3RTYML3dc",
+            authDomain: "quantam-bytes.firebaseapp.com",
+            databaseURL: "https://quantam-bytes-default-rtdb.firebaseio.com",
+            projectId: "quantam-bytes",
+            storageBucket: "quantam-bytes.appspot.com",
+            messagingSenderId: "585268620067",
+            appId: "1:585268620067:web:e38ac87fd084c37b447a96"
+
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+
+        // Get a reference to the database service
+        const db = getDatabase(app);
+        document.getElementById('form1').addEventListener('submit', function (e) {
+            e.preventDefault();
+            set(ref(db, 'users/' + Math.random().toString(36).slice(2, 7)), {
+                stn: document.getElementById('stn').value,
+                contact: document.getElementById('contact').value,
+                date_of_apply: document.getElementById('date_of_apply').value,
+                from: document.getElementById('from').value,
+                to: document.getElementById('to').value,
+                expirydate: document.getElementById('expirydate').value
+            });
+
+            alert('Your form is submitted');
+            document.getElementById('form1').reset();
+        });
+    </script>
+    </body>
+</html>

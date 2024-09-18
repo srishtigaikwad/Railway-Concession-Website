@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color:rgb(214, 222, 243);
+}
+
+.form_back{
+    display: flex;
+   align-items: center;
+  border-radius: 15%;
+  border: solid  rgb(66, 66, 83);
+  border-width: 20px 15px 11px;
+    margin: 10% 35%;
+    height: 140vh;
+     width: 30vw;
+    background-color:  rgb(2, 47, 116);
+    color: white;
+}
+.form_back div input{
+ width: 19vw;
+}
+#sign_up_cred{
+    width: 40vw;
+    margin: auto 18%;
+   
+}
+#log_in_cred{
+    width: 40vw;
+    margin: auto 18%;
+   
+}
+.log_in{
+    color: rgb(52, 164, 255);
+}
+.sign_up{
+    color:  rgb(52, 164, 255);
+}
